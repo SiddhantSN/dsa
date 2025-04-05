@@ -1,6 +1,9 @@
 package basics.arrays;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Arrays1 {
 	
@@ -57,4 +60,22 @@ public class Arrays1 {
 		return sellMargin;
 		
 	}
+	
+	public static List<String> dnaSequences(String s) {
+		HashSet<String> seen =  new HashSet<String>();
+		HashSet<String> dnaSet =  new HashSet<String>();
+		int windowEnd = 10;
+		int windowStart = 0;
+		while (windowEnd<= s.length()) {
+			String dna = s.substring(windowStart,windowEnd);
+			if(!seen.add(dna)) {
+				dnaSet.add(dna);
+			}
+			windowStart = windowStart + 1;
+			windowEnd = windowEnd + 1;
+		}
+		return dnaSet.stream().collect(Collectors.toList());
+		
+	}
+	
 }

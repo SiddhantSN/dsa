@@ -8,5 +8,6 @@ public class Test {
 		//
 		int [] arr = {7,1,5,3,6,4};
 		System.out.println(Arrays1.BuySellPrice(arr));
+		System.out.println(Arrays1.dnaSequences("AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT"));
 	}
 }
