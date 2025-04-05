@@ -38,4 +38,23 @@ public class Arrays1 {
 		}
 		return find;
 	}
+	
+	public static int BuySellPrice(int [] prices) {
+		int buyPrice = prices[0];
+		int sellMargin = 0;
+		int sellPrice = 0;
+		for (int i : prices) {
+			if (buyPrice < i) {
+				if(sellMargin< (i-buyPrice)) {
+					sellPrice = i;
+					sellMargin = sellPrice-buyPrice; //sellMarginCondition
+				}
+			}
+			else {
+				buyPrice = i;
+			}
+		}
+		return sellMargin;
+		
+	}
 }

@@ -6,7 +6,7 @@ public class Test {
 
 	public static void main(String[] args) {
 		//
-		int [] arr = {1,1,0,1,1,1};
-		System.out.println(Arrays1.getConsecutiveOnes(arr));
+		int [] arr = {7,1,5,3,6,4};
+		System.out.println(Arrays1.BuySellPrice(arr));
 	}
 }
