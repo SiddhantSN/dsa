@@ -1,5 +1,6 @@
 package basics.arrays;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -78,4 +79,45 @@ public class Arrays1 {
 		
 	}
 	
-}
+	public List<String> summaryRanges(int[] nums) {
+		List<String> strList = new ArrayList<>();
+		int start = nums[0];
+		for (int i = 0; i < nums.length; i++) {
+			if(nums[i] == nums[i-1]+1) {
+				if(start == nums[i-1]+1) {
+					
+				}
+			}
+		}
+		return strList;
+	}
+	
+	public static int binarySearch(int[] arr,int x) {
+		int low = 0;
+	
+    int high = arr.length - 1;
+
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
+
+        if (arr[mid] == x) 
+            return mid; // x found at index mid
+        if (arr[mid] < x)
+            low = mid + 1;
+        else
+            high = mid - 1;
+    }
+
+    return -1; // x not found}
+	}
+	
+	public static boolean jumpGame(int [] nums) {
+		int reachable = 0;
+	       for(int i = 0; i < nums.length; i ++) {
+	           if(i > reachable) return false;
+	           reachable = Math.max(reachable, i + nums[i]);
+	       } 
+	       return true;
+		}
+	}
+	
