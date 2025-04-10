@@ -1,9 +1,11 @@
 package basics.arrays;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Arrays1 {
@@ -21,6 +23,32 @@ public class Arrays1 {
         maxi = Math.max(maxi, cnt);
     }
     return maxi;
+    }
+	
+    public static boolean containsDuplicate(int[] nums) {
+        HashSet<Integer> set = new HashSet<>();
+        for (int i = 0; i < nums.length; i++) {
+			if(!set.add(nums[i])) {
+				return true;
+			}
+		}
+		return false;
+    }
+    
+public boolean isAnagram(String s, String t) {
+        char[] charS = s.toCharArray();
+        char[] charT = t.toCharArray();
+        Arrays.sort(charS);
+        Arrays.sort(charT);
+        if(charS.length != charT.length) {
+        	return false;
+        }
+        for(int i=0;i<charS.length;i++) {
+        	if(charS[i]!=charT[i]) {
+        		return false;
+        	}
+        }
+		return true;
     }
 	
 	public static int appearsOnce(int [] nums) {
@@ -60,6 +88,36 @@ public class Arrays1 {
 		}
 		return sellMargin;
 		
+	}
+	
+	public static int longestSuccessiveElements(int[] a) {
+        int n = a.length;
+        if (n == 0)
+            return 0;
+
+        int longest = 1;
+        Set<Integer> set = new HashSet<>();
+
+        // put all the array elements into set
+        for (int i = 0; i < n; i++) {
+            set.add(a[i]);
+        }
+
+        // Find the longest sequence
+        for (int it : set) {
+            // if 'it' is a starting number
+            if (!set.contains(it - 1)) {
+                // find consecutive numbers
+                int cnt = 1;
+                int x = it;
+                while (set.contains(x + 1)) {
+                    x = x + 1;
+                    cnt = cnt + 1;
+                }
+                longest = Math.max(longest, cnt);
+            }
+        }
+        return longest;
 	}
 	
 	public static List<String> dnaSequences(String s) {
@@ -110,6 +168,20 @@ public class Arrays1 {
 
     return -1; // x not found}
 	}
+	
+	public static boolean isPalindrome(String str) {
+		int left = 0;
+		int right = str.length()-1;
+		while(left<right) {
+			if(str.charAt(left)!=str.charAt(right)) {
+				return false;
+			}
+			left++;
+			right--;
+			}
+		return true;
+		}
+	
 	
 	public static boolean jumpGame(int [] nums) {
 		int reachable = 0;
