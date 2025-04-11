@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -182,6 +185,55 @@ public boolean isAnagram(String s, String t) {
 		return true;
 		}
 	
+    public List<List<String>> groupAnagrams(String[] strs) {
+    	Map<String, List<String>> map = new HashMap<>();
+         for (String string : strs) {
+			char[] strChars = string.toCharArray();
+			Arrays.sort(strChars);
+			String str = new String(strChars);
+			
+			if(!map.containsKey(str)) {
+				map.put(str, new ArrayList<>());
+			}
+			map.get(str).add(string);
+		}
+		return new ArrayList<>(map.values());
+    }
+    
+    public static int[] topKFrequent(int[] nums, int k) {
+       Map<Integer, Integer> track = new HashMap<>();
+       for (int i : nums) {
+		if(!track.containsKey(i)) {
+			track.put(i,1);
+		}
+		else {
+			track.put(i, track.get(i)+1);
+		}
+	}
+       track = track.entrySet()
+    		    .stream()
+    		    .sorted(Map.Entry.<Integer, Integer>comparingByValue().reversed())
+    		    .collect(Collectors.toMap(
+    		        Map.Entry::getKey,
+    		        Map.Entry::getValue,
+    		        (e1, e2) -> e1,
+    		        LinkedHashMap::new
+    		    ));
+       List<Integer> ansList = new ArrayList<>();
+       
+    	   for (Integer i : track.keySet()) {
+    			   ansList.add(i);
+    			   if(ansList.size()>=k) {
+    				   break;
+    			   }
+    		   
+		}
+       
+       int[] array = new int[ansList.size()];
+       for(int i = 0; i < ansList.size(); i++) array[i] = ansList.get(i);
+	return array;
+       
+    }
 	
 	public static boolean jumpGame(int [] nums) {
 		int reachable = 0;
