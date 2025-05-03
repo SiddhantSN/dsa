@@ -17,42 +17,48 @@ import java.util.stream.Stream;
 import basics.arrays.Arrays1;
 import basics.arrays.StreamsTest;
 import basics.arrays.StreamsTest.Employee;
+import basics.stacks.Stacks;
 
 public class Test {
 
 	public static void main(String[] args) {
 		//
-		int [] arr = {1,1,1,2,2,3};
+		int [] arr = {2,7,11,15};
+		String str = "Anavrin";
+		System.out.println(Stacks.reverseStringUsingStacks(str));
 		
-		List<Employee> empList = StreamsTest.addData(new ArrayList<Employee>());
-		List<String> names = empList.stream().map(e->e.name()).toList();
-		String name = names.stream().sorted(Comparator.comparingInt(String::length).reversed()).findFirst().get();
-		System.out.println(name);
-		
-		Integer salary = empList.stream().map(e->e.Salary()).sorted(Comparator.comparingInt(Integer::intValue).reversed()).findFirst().get();
-		System.out.println(salary);
-		
-		Integer avgSalary = (int) empList.stream().mapToInt(Employee::Salary).average().orElse(0);
-		System.out.println(avgSalary);
-		
-		Supplier<Double> supplier = () -> Math.random()*100;
-		int hello = supplier.get().intValue();
-		System.out.println(hello);
-		
-			
-		Consumer<Integer> consumer =t -> t.intValue();
-		System.out.println(consumer);
-		
-		
-		List<Integer> noDupli = Arrays.asList(1,2,2,3,4,6,6,6,9).stream().distinct().toList();
-		System.out.println(noDupli);
-		
-		
-		for (Integer integer : Arrays1.topKFrequent(arr, 2)) {
-			System.out.println(integer);
-		}
-		
-		
+//		List<Employee> empList = StreamsTest.addData(new ArrayList<Employee>());
+//		List<String> names = empList.stream().map(e->e.name()).toList();
+//		String name = names.stream().sorted(Comparator.comparingInt(String::length).reversed()).findFirst().get();
+//		System.out.println(name);
+//		
+//		Integer salary = empList.stream().map(e->e.Salary()).sorted(Comparator.comparingInt(Integer::intValue).reversed()).findFirst().get();
+//		System.out.println(salary);
+//		
+//		Integer avgSalary = (int) empList.stream().mapToInt(Employee::Salary).average().orElse(0);
+//		System.out.println(avgSalary);
+//		
+//		Supplier<Double> supplier = () -> Math.random()*100;
+//		int hello = supplier.get().intValue();
+//		System.out.println(hello);
+//		
+//			
+//		Consumer<Integer> consumer =t -> t.intValue();
+//		System.out.println(consumer);
+//		
+//		
+//		List<Integer> noDupli = Arrays.asList(1,2,2,3,4,6,6,6,9).stream().distinct().toList();
+//		System.out.println(noDupli);
+//		
+//		
+//		for (Integer integer : Arrays1.productExceptSelf(arr)) {
+//			System.out.println(integer);
+//		}
+//		int[] arr1 = Arrays1.twoSum2(arr, 0);
+//		for (int i : arr1) {
+//			System.out.println(i);
+//		}
+//System.out.println(Arrays1.twoSum2(arr1, 9));
 		}
 		
 		

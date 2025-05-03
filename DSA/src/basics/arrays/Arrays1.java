@@ -1,7 +1,9 @@
 package basics.arrays;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -9,6 +11,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
 
 public class Arrays1 {
@@ -28,31 +31,90 @@ public class Arrays1 {
     return maxi;
     }
 	
-    public static boolean containsDuplicate(int[] nums) {
+    
+	
+	
+	public  static int longestConsecutive(int[] nums) {
+        Arrays.sort(nums);
+        int length = 1;
+        int reset = 0;
+        
+        if(nums.length==0) {
+        	return 0;
+        }
+        for (int i = 0; i < nums.length-1; i++) {
+			if(nums[i+1] - nums[i] == 1) {
+				length++;
+				reset = length;
+			}
+			else if (nums[i] != nums[i+1]) {
+				
+				length=1;
+			}
+		}
+		return Math.max(length, reset);
+    }
+	
+	// TLE
+	public  static int longestConsecutive2(int[] nums) {
+		int length = 0;
+		int longest = 0;
+		Set<Integer> set = Arrays.stream(nums).boxed().collect(Collectors.toSet());
+		for (Integer integer : nums) {
+			if(!set.contains(integer-1)) {
+				length=0;
+				while(set.contains(integer+length)) {
+					length++;
+				}
+			}
+			longest = Math.max(length, longest);
+		}
+		return longest;
+	}
+	
+    public static int[] twoSum2(int[] nums, int target) {	
+    	int l = 0, r = nums.length - 1;
+	
+	while (nums[l] + nums[r] != target) {
+		if (nums[l] + nums[r] < target) l++;
+		else r--;
+	}
+
+	return new int[] {l+1, r+1};}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public static boolean containsDuplicate(int[] nums) {
         HashSet<Integer> set = new HashSet<>();
-        for (int i = 0; i < nums.length; i++) {
-			if(!set.add(nums[i])) {
+        for (Integer integer : nums) {
+			if(!set.add(integer)) {
 				return true;
 			}
 		}
-		return false;
+        return false;
     }
     
 public boolean isAnagram(String s, String t) {
-        char[] charS = s.toCharArray();
-        char[] charT = t.toCharArray();
-        Arrays.sort(charS);
-        Arrays.sort(charT);
-        if(charS.length != charT.length) {
-        	return false;
-        }
-        for(int i=0;i<charS.length;i++) {
-        	if(charS[i]!=charT[i]) {
-        		return false;
-        	}
-        }
-		return true;
-    }
+	char[] charS = s.toCharArray();
+	char[] charT = t.toCharArray();
+	
+	Arrays.sort(charS);
+	Arrays.sort(charT);
+	
+	for (int i = 0; i < charT.length; i++) {
+		if(charT[i] != charS[i]) {
+			return false;
+		}
+		
+	}
+	return true;
+}
 	
 	public static int appearsOnce(int [] nums) {
 		HashMap<Integer, Integer> count = new HashMap<>();
@@ -153,26 +215,28 @@ public boolean isAnagram(String s, String t) {
 		return strList;
 	}
 	
-	public static int binarySearch(int[] arr,int x) {
-		int low = 0;
-	
-    int high = arr.length - 1;
-
-    while (low <= high) {
-        int mid = low + (high - low) / 2;
-
-        if (arr[mid] == x) 
-            return mid; // x found at index mid
-        if (arr[mid] < x)
-            low = mid + 1;
-        else
-            high = mid - 1;
-    }
-
-    return -1; // x not found}
+	public static int binarySearch(int[] nums,int target) {
+		int start = 0;
+		int end = nums.length-1;
+		
+		while(start<=end) {
+			int mid = start +(end-start)/2;
+			if(target == nums[mid]) {
+				return mid;
+			}
+			if(target>nums[mid]) {
+				start = mid+1;
+			}
+			if(target<nums[mid]) {
+				end = mid-1;
+			}
+		}
+		return -1;
+		
 	}
 	
 	public static boolean isPalindrome(String str) {
+		 str = str.replaceAll(" ", "").replaceAll("[^A-Za-z0-9]", "").toLowerCase();
 		int left = 0;
 		int right = str.length()-1;
 		while(left<right) {
@@ -233,6 +297,40 @@ public boolean isAnagram(String s, String t) {
        for(int i = 0; i < ansList.size(); i++) array[i] = ansList.get(i);
 	return array;
        
+    }
+    
+public int[] twoSum(int[] nums, int target) {
+	int[] result = new int[2];
+        for (int i = 0; i < nums.length; i++) {
+        	for (int j = 0; j < nums.length; j++) {
+				if(nums[i]+nums[j] == target && i != j) {
+					result[0] = i;
+					result[1] = i;
+				}
+				
+			}
+			
+		}
+		return result;
+    }
+    
+    public static int[] productExceptSelf(int[] nums) {
+    	List<Integer> list = new ArrayList<>();
+    	List<Integer> ans = new ArrayList<>();
+    	for (Integer integer : nums) {
+			list.add(integer);
+		}
+    	for (Integer integer : nums) {
+			List<Integer> temp = new ArrayList<>();
+			for (Integer integer2 : nums) {
+				temp.add(integer2);
+			}
+			temp.remove(integer);
+			ans.add(temp.stream().reduce((x,y)->x*y).get());
+		}
+    	int[] array = new int[ans.size()];
+        for(int i = 0; i < ans.size(); i++) array[i] = ans.get(i);
+		return array;
     }
 	
 	public static boolean jumpGame(int [] nums) {
