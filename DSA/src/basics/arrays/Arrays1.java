@@ -31,6 +31,83 @@ public class Arrays1 {
     return maxi;
     }
 	
+    public static int search(int[] nums, int target) {
+    	
+    	int start = 0;
+    	int end = nums.length-1;
+    	
+    	while(start<=end) {
+    		int mid = start + (end-start)/2;
+    		
+    		if(target == nums[mid]) {
+    			return mid;
+    		}
+    		if(nums[start]<=nums[mid]) {
+    			if(target<nums[start] || target>nums[mid]) {
+    				start = mid+1;
+    			}
+    			else {
+    				end = mid-1;
+    			}
+    		}
+    		else {
+    			if(target<nums[mid] || target>nums[end]) {
+    				end = mid-1;
+    			}
+    			else {
+    				start = mid+1;;
+    			}
+    		}
+    	}
+    	return -1;
+    	
+    }
+	
+    public static boolean checkInclusion(String s1, String s2) {
+        int left = 0;
+        boolean result = false;
+        int counter = 0;
+        HashMap<Character, Integer> s1Map = new HashMap<>();
+        HashMap<Character, Integer> s2Map = new HashMap<>();
+        for (char  str1 : s1.toCharArray()) {
+			if(s1Map.get(str1)!=null) {
+				s1Map.put(str1, s1Map.get(str1)+1);
+			}
+			else {
+				s1Map.put(str1, 1);			
+				}
+		}
+        
+        for(int right = 1;right<s2.length();right++) {
+        	while(right-left ==s1.length()) {
+        		String s3 = s2.substring(left,right);
+        		for (char  str1 : s3.toCharArray()) {
+        			if(s2Map.get(str1)!=null) {
+        				s2Map.put(str1, s2Map.get(str1)+1);
+        			}
+        			else {
+        				s2Map.put(str1, 1);			
+        				}
+        		}
+        		
+        		for (Character char1 : s1Map.keySet()) {
+					if(s2Map.get(char1)!=null) {
+						counter++;
+					}
+				}
+        		
+        		if(counter == s1.length()) {
+        			return true;
+        		}
+        		else {
+        			left++;
+        		}
+        	}
+        }
+		return result;
+        
+    }
+	
     
 	
 	
@@ -217,7 +294,8 @@ public boolean isAnagram(String s, String t) {
 	
 	public static int binarySearch(int[] nums,int target) {
 		int start = 0;
-		int end = nums.length-1;
+		int end = nums.length;
+		
 		
 		while(start<=end) {
 			int mid = start +(end-start)/2;
@@ -232,7 +310,6 @@ public boolean isAnagram(String s, String t) {
 			}
 		}
 		return -1;
-		
 	}
 	
 	public static boolean isPalindrome(String str) {
@@ -248,6 +325,80 @@ public boolean isAnagram(String s, String t) {
 			}
 		return true;
 		}
+	
+    public static boolean searchMatrix(int[][] matrix, int target) {
+        for (int i = 0; i < matrix.length; i++) {
+			int[] js = matrix[i];
+			if(target > js[js.length-1]) {
+				continue;
+			}
+			int start = 0;
+			int end = js.length-1;
+			
+			
+			while(start<=end) {
+				int mid = start+ (end-start)/2;
+				if(target== js[mid]) {
+					return true;
+				}
+				else if(target>js[mid]) {
+					start = mid+1;
+				}
+				else {
+					end = mid-1;
+				}
+			}
+		}
+		return false;
+    }
+    
+    public int findMin(int[] nums) {
+        for (int i = 0; i < nums.length-1; i++) {
+			if(!(nums[i]<nums[i+1])) {
+				return nums[i+1];
+			}
+			
+		}
+		return nums[0];
+    }
+	
+	
+    public  static int maxArea(int[] height) {
+     int left = 0;
+     int right = height.length-1;
+     int maxArea = 0;
+     
+     while(left<right) {
+    	 int area = (right-left)*(Math.min(height[left], height[right]));
+    	 maxArea = Math.max(maxArea, area);
+    	 
+    	 if(height[left]<=height[right]) {
+    		 left++;
+    	 }
+    	 else {
+    		 right--;
+    	 }
+     }
+	return maxArea;
+    }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
     public List<List<String>> groupAnagrams(String[] strs) {
     	Map<String, List<String>> map = new HashMap<>();

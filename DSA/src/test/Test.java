@@ -23,9 +23,16 @@ public class Test {
 
 	public static void main(String[] args) {
 		//
-		int [] arr = {2,7,11,15};
+		int [] arr = {5,1,3};
+		int[][] matrix = {
+			    {1, 3, 5, 7},
+			    {10, 11, 16, 20},
+			    {23, 30, 34, 60}
+			};
 		String str = "Anavrin";
-		System.out.println(Stacks.reverseStringUsingStacks(str));
+		//System.out.println(Arrays1.searchMatrix(matrix, 90));
+		System.out.println(Arrays1.checkInclusion("ab", "eidbaooo"));
+		System.out.println(Arrays1.search(arr, 3));
 		
 //		List<Employee> empList = StreamsTest.addData(new ArrayList<Employee>());
 //		List<String> names = empList.stream().map(e->e.name()).toList();
