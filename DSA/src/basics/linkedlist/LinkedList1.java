@@ -40,4 +40,58 @@ public class LinkedList1 {
 
 		return dummy.next;
 	}
+
+	public boolean hasCycle(ListNode head) {
+		ListNode slow = head;
+		ListNode fast = head;
+
+		while (fast != null && fast.next != null) {
+			slow = slow.next;
+			fast = fast.next.next;
+			if (slow == fast) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+		ListNode dummy = new ListNode();
+		ListNode cur = dummy;
+
+		int carry = 0;
+		while (l1 != null || l2 != null || carry != 0) {
+			int v1 = (l1 != null) ? l1.val : 0;
+			int v2 = (l2 != null) ? l2.val : 0;
+
+			int val = v1 + v2 + carry;
+			carry = val / 10;
+			val = val % 10;
+			cur.next = new ListNode(val);
+
+			cur = cur.next;
+			l1 = (l1 != null) ? l1.next : null;
+			l2 = (l2 != null) ? l2.next : null;
+		}
+
+		return dummy.next;
+	}
+
+	public ListNode removeNthFromEnd(ListNode head, int n) {
+		ListNode dummy = new ListNode(0, head);
+		ListNode left = dummy;
+		ListNode right = head;
+
+		while (n > 0) {
+			right = right.next;
+			n--;
+		}
+
+		while (right != null) {
+			left = left.next;
+			right = right.next;
+		}
+
+		left.next = left.next.next;
+		return dummy.next;}
 }
