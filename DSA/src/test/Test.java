@@ -30,9 +30,11 @@ public class Test {
 			    {23, 30, 34, 60}
 			};
 		String str = "Anavrin";
+		String[] tokens = {"10","6","9","3","+","-11","*","/","*","17","+","5","+"};
 		//System.out.println(Arrays1.searchMatrix(matrix, 90));
 		System.out.println(Arrays1.checkInclusion("ab", "eidbaooo"));
 		System.out.println(Arrays1.search(arr, 3));
+		System.out.println(Stacks.evalRPN(tokens));
 		
 //		List<Employee> empList = StreamsTest.addData(new ArrayList<Employee>());
 //		List<String> names = empList.stream().map(e->e.name()).toList();
