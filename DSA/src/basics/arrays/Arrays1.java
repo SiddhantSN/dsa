@@ -31,6 +31,59 @@ public class Arrays1 {
     return maxi;
     }
 	
+    public static int maxProfit(int[] prices) {
+        int left = 0;
+        int right = 1;
+        int profit = Integer.MIN_VALUE;
+        
+        while(right<prices.length) {
+        	if(prices[left]>prices[right]) {
+        		left=right;
+        		right++;
+        	}
+        	else {
+        		profit = Math.max(profit,prices[right]-prices[left]);
+        		right++;
+        	}
+        }
+		return profit;
+        
+    }
+    
+    public static int lengthOfLongestSubstring(String s) {
+    	int left = 0;
+    	HashSet<Character> set = new HashSet<>();
+    	int res = 0;
+    	
+    	for (int right = 0; right < s.toCharArray().length; right++) {
+			while(set.contains(s.charAt(right))) {
+				set.remove(s.charAt(left));
+				left++;
+			}
+			set.add(s.charAt(right));
+			res  =Math.max(res, right-left+1);
+		}
+		return res;
+    	
+    }
+    
+    public static int characterReplacement(String s, int k) {
+        int left = 0;
+        int maxLength = 0;
+        int repl = 0;
+        HashSet<Character> set = new HashSet<>();
+        for (int right = 1; right < s.toCharArray().length; right++) {
+        	while(repl<=k) {
+        		while(!set.contains(s.charAt(right))) {
+        			repl++;
+        		}
+        		set.add(s.charAt(right));
+        		maxLength = Math.max(maxLength, set.size());
+        	}
+        }
+		return maxLength;
+    }
+	
     public static int search(int[] nums, int target) {
     	
     	int start = 0;

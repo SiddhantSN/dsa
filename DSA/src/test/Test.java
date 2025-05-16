@@ -23,18 +23,31 @@ public class Test {
 
 	public static void main(String[] args) {
 		//
-		int [] arr = {5,1,3};
+		int [] arr = {73,74,75,71,69,72,76,73};
+		String str = "ABAB";
 		int[][] matrix = {
 			    {1, 3, 5, 7},
 			    {10, 11, 16, 20},
 			    {23, 30, 34, 60}
 			};
-		String str = "Anavrin";
-		String[] tokens = {"10","6","9","3","+","-11","*","/","*","17","+","5","+"};
-		//System.out.println(Arrays1.searchMatrix(matrix, 90));
-		System.out.println(Arrays1.checkInclusion("ab", "eidbaooo"));
-		System.out.println(Arrays1.search(arr, 3));
-		System.out.println(Stacks.evalRPN(tokens));
+		
+//		List<String> generateParenthesis = Stacks.generateParenthesis(3);
+//		for (String string : generateParenthesis) {
+//			System.out.println(string);
+//		}
+		int[] dailyTemperatures = Stacks.dailyTemperatures(arr);
+		for (int i : dailyTemperatures) {
+			System.out.println(i);
+		}
+//		String str = "Anavrin";
+//		String[] tokens = {"10","6","9","3","+","-11","*","/","*","17","+","5","+"};
+//		//System.out.println(Arrays1.searchMatrix(matrix, 90));
+//		System.out.println(Arrays1.checkInclusion("ab", "eidbaooo"));
+//		System.out.println(Arrays1.search(arr, 3));
+//		System.out.println(Stacks.evalRPN(tokens));
+//		System.out.println(Arrays1.maxProfit(arr));
+//		System.out.println(Arrays1.lengthOfLongestSubstring(str));
+		System.out.println(Arrays1.characterReplacement(str, 2));
 		
 //		List<Employee> empList = StreamsTest.addData(new ArrayList<Employee>());
 //		List<String> names = empList.stream().map(e->e.name()).toList();

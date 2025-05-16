@@ -1,6 +1,9 @@
 package basics.linkedlist;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.List;
 
 public class LinkedList1 {
 
@@ -93,5 +96,49 @@ public class LinkedList1 {
 		}
 
 		left.next = left.next.next;
-		return dummy.next;}
+		return dummy.next;
+	}
+	
+    public void reorderList(ListNode head) {
+    	ListNode slow = head;
+    	ListNode fast = head.next;
+    	
+    	while(fast!=null && fast.next !=null) {
+    		slow = slow.next;
+    		fast = fast.next.next;
+    	}
+    	// reverse the second list
+    	ListNode secondListHead = slow.next;
+    	// update the slow.next to null to end the first list 
+    	slow.next = null;
+    	ListNode prev = null;
+    	ListNode tempNextForSecondList = secondListHead.next;
+    	secondListHead.next = prev;
+    	prev = secondListHead;
+    	secondListHead = tempNextForSecondList;
+    	
+    	//merge two lists
+    	//head of second list after reversal
+    	ListNode second = prev;
+    	ListNode first = head;
+    	
+    	while(second.next !=null) {
+    		ListNode tmp1 = first.next;
+    		ListNode tmp2 = second.next;
+    		first.next = second;
+    		second.next = tmp1;
+    		first = tmp1;
+    		second = tmp2;
+    	}
+    }
+    
+    public int findDuplicate(int[] nums) {
+    	HashSet<Integer> set = new HashSet<>();
+        for (int i : nums) {
+			if(!set.add(i)) {
+				return i;
+			}
+		}
+		return -1;
+    }
 }
