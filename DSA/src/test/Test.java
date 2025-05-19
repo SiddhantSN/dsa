@@ -17,6 +17,7 @@ import java.util.stream.Stream;
 import basics.arrays.Arrays1;
 import basics.arrays.StreamsTest;
 import basics.arrays.StreamsTest.Employee;
+import basics.prep.InterviewPrepBasics;
 import basics.stacks.Stacks;
 
 public class Test {
@@ -24,21 +25,28 @@ public class Test {
 	public static void main(String[] args) {
 		//
 		int [] arr = {73,74,75,71,69,72,76,73};
-		String str = "ABAB";
+		String str = "rotator";
 		int[][] matrix = {
 			    {1, 3, 5, 7},
 			    {10, 11, 16, 20},
 			    {23, 30, 34, 60}
 			};
 		
+		System.out.println(InterviewPrepBasics.isPalindrome(str));
+		System.out.println(InterviewPrepBasics.printFiboNumber(10));
+		System.out.println(InterviewPrepBasics.factorial(5));
+		
+		System.out.println(InterviewPrepBasics.reverseString("hello"));
+		System.out.println(InterviewPrepBasics.isPrime(3));
+		System.out.println(InterviewPrepBasics.sumOfPrimes(12));
 //		List<String> generateParenthesis = Stacks.generateParenthesis(3);
 //		for (String string : generateParenthesis) {
 //			System.out.println(string);
 //		}
-		int[] dailyTemperatures = Stacks.dailyTemperatures(arr);
-		for (int i : dailyTemperatures) {
-			System.out.println(i);
-		}
+//		int[] dailyTemperatures = Stacks.dailyTemperatures(arr);
+//		for (int i : dailyTemperatures) {
+//			System.out.println(i);
+//		}
 //		String str = "Anavrin";
 //		String[] tokens = {"10","6","9","3","+","-11","*","/","*","17","+","5","+"};
 //		//System.out.println(Arrays1.searchMatrix(matrix, 90));
