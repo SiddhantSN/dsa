@@ -32,6 +32,39 @@ public class Arrays1 {
 		return maxi;
 	}
 	
+    public int numJewelsInStones(String jewels, String stones) {
+    	HashMap<Character, Integer> stonesMap = new HashMap<>();
+        for (Character stone: stones.toCharArray()) {
+			stonesMap.put(stone, stonesMap.getOrDefault(stone, 0)+1);
+		}
+        int result = 0;
+        for (Character jewel : jewels.toCharArray()) {
+			result += stonesMap.getOrDefault(jewel,0);
+		}
+		return result;
+    }
+    
+    public int[] twoSum3(int[] nums, int target) {
+    	HashMap<Integer, Integer> map = new HashMap<>();
+    	
+    	for (int i = 0; i < nums.length; i++) {
+			if(map.containsKey(target-nums[i])) {
+				return new int[] {map.get(target-nums[i]),i};
+			}
+			map.put(nums[i], i);
+		}
+		return new int [] {};
+    	
+    }
+    public static int findMissingNumber(int [] arr, int n) {
+    	int sumOfN = n*(n+1)/2;
+    	int CS = 0;
+    	for (int i : arr) {
+			CS += i;
+		}
+    	return sumOfN-CS;
+    }
+	
 public static HashMap<Character, Integer> countChars(String str){
 	char[] charArray = str.toCharArray();
 	HashMap<Character, Integer> map = new HashMap<>();
@@ -510,7 +543,7 @@ public static HashMap<Character, Integer> countChars(String str){
 
 	}
 
-	public int[] twoSum(int[] nums, int target) {
+	public int[] twoSum1(int[] nums, int target) {
 		int[] result = new int[2];
 		for (int i = 0; i < nums.length; i++) {
 			for (int j = 0; j < nums.length; j++) {

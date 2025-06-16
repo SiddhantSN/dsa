@@ -1,0 +1,34 @@
+Important Questions 
+	How do you reverse a String in Java?
+	Find the missing number
+	Write a program to check if a String is a palindrome.
+	Write a program to find the factorial of a number.
+	Write a program to check if a number is prime.
+	Write a program to generate Fibonacci series.
+	How do you swap two numbers without using a third variable?
+	Implement a simple Stack/Queue using an ArrayList or LinkedList.
+	Write a program to remove duplicate elements from an ArrayList.
+	How to count character occurrences in a String?
+	How to sort an array in ascending/descending order?
+	Write a program to find the largest/smallest element in an array.
+	Implement a custom equals() and hashCode() method for a class.
+	One thread even, One thread odd
+	Comparable Comparator Implementations
+	Detect Loop in a linked list 
+	Find substring that contains all vowels (aeiou)
+	Read big CSV file or transfer over network
+	Intersection point of two linked list 
+	Balanced Parenthesis
+	
+	Decision based recursion problem 
+	Middle Element in a linked list 
+	Convert "$123,840/y" string to integer
+	Kadane's Algorithm - Max sum of subArray
+	How to iterate over LinkedList - dummy.next = head, curr = dummy.next, prev = dummy
+	Code Producer Consumer problem 
+	Longest Substring without repeating characters or Longest Repeating character replacement
+	
+	Oracle : 
+	How would you solve the "Word Pattern" problem optimally?
+	What’s the time complexity of your Coin Change solution?
+	Why is synchronization critical in banking transactions?

@@ -4,6 +4,8 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class ConcurrencyBasics {
 	
@@ -24,6 +26,8 @@ public class ConcurrencyBasics {
 		try {
 			executorService.submit(getRunnable()).get();
 			executorService.submit(getRunnable()).get();
+			// get waits for sequential finishing of each operation
+			// and can be called on a future object to store the result 
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
