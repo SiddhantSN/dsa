@@ -11,6 +11,7 @@ Important Questions
 	How to count character occurrences in a String?
 	How to sort an array in ascending/descending order?
 	Write a program to find the largest/smallest element in an array.
+	Second largest in an array
 	Implement a custom equals() and hashCode() method for a class.
 	One thread even, One thread odd
 	Comparable Comparator Implementations
@@ -32,3 +33,7 @@ Important Questions
 	How would you solve the "Word Pattern" problem optimally?
 	What’s the time complexity of your Coin Change solution?
 	Why is synchronization critical in banking transactions?
+	
+	 Write a java 8 program to get the characters from a string whose count is 2 or more than 2 e.g. input: baseball , output: b, a, l.
+Ans. This program identifies and extracts characters from a string that appear two or more times using Java 8 features.
+Use a Map to count occurrences of each character. Example: 'baseball' -> {b=1, a=2, s=1, e=1, l=2}

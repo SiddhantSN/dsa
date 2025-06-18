@@ -11,6 +11,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Stack;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -587,4 +588,25 @@ public static HashMap<Character, Integer> countChars(String str){
 		}
 		return true;
 	}
+	
+    public int[] dailyTemperatures(int[] temperatures) {
+    	int size = temperatures.length;
+    	Stack<Integer> stack = new Stack<>();
+    	int [] res = new int [size];
+    	
+    	for (int i = 0; i < size; i++) {
+			while(!stack.isEmpty() && temperatures[i]>temperatures[stack.peek()]) {
+				int prevIndex = stack.pop();
+				res[prevIndex] = i-prevIndex;
+			}
+			stack.push(i);
+		}
+		return res;
+    	
+    }
+    
+    public int[] nextGreaterElement(int[] nums1, int[] nums2) {
+		return nums2;
+    	
+    }
 }

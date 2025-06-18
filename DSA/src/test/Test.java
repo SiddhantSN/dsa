@@ -20,8 +20,8 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import basics.arrays.Arrays1;
-import basics.arrays.StreamsTest;
-import basics.arrays.StreamsTest.Employee;
+import basics.arrays.EmployeeFactory;
+import basics.arrays.EmployeeFactory.Employee;
 import basics.prep.InterviewPrepBasics;
 import basics.stacks.Stacks;
 

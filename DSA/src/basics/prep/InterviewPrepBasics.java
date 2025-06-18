@@ -2,23 +2,30 @@ package basics.prep;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Stack;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
+import basics.arrays.EmployeeFactory;
+import basics.arrays.EmployeeFactory.Employee;
 
 public class InterviewPrepBasics {
 	
 	
 	public static void main(String[] args) {
-		System.out.println(lengthOfLongestSubstring("pwwkew"));
-		System.out.println(countOccurancesUsingStreams("abc"));
-		System.out.println(countOccurances("abc"));
-		System.out.println(countOccurancesUsingStreamsForInts(1122334567));
+		int[] arr = {1,2,3,4,5,6};
+		
+		OccursMoreThanTwo("aaabbbbbcdeffffffghikkl");
+		filterEmployees();
+		
+		
 	}
 	
 
@@ -192,8 +199,63 @@ public class InterviewPrepBasics {
 		return collect;
     }
     
-	//Balanced Parenthesis
+	//Balanced Parenthesis {[()]}
     
+    public static boolean balancedParenthesis(String str) {
+    	Stack<Character> stack =new Stack<>();
+    	for (Character character : str.toCharArray()) {
+    		if(character.equals('{')) {
+    			stack.push('}');
+    		}
+    		else if(character.equals('(')) {
+    			stack.push(')');
+    		}
+    		else if(character.equals('[')) {
+    			stack.push(']');
+    		}
+    		else if(stack.isEmpty()||stack.pop()!=character) {
+    			return false;
+    		}
+    		
+		}
+		return stack.isEmpty();
+    }
+    
+    // second largest in array
+    
+    public static int secondLargest(int[]arr) {
+    	int largest = Integer.MIN_VALUE;
+    	int secondLargest = Integer.MIN_VALUE;
+    	for (int i : arr) {
+			if(i>largest) {
+				largest = i;
+			}
+			}
+    	for (int i : arr) {
+			if(i>secondLargest && i<largest) {
+				secondLargest =i;
+		}
+    }
+		return secondLargest;
+    }
+    
+    public static void OccursMoreThanTwo(String str) {
+    	List<Character> list = new ArrayList<>();
+    	for (Character character : str.toCharArray()) {
+			list.add(character);
+		}
+    	Map<Character, Long> collect = list.stream().collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));
+    	Map<Character, Long> res = collect.entrySet().stream().filter(e->e.getValue()>2).collect(Collectors.toMap(k->k.getKey(), v->v.getValue()));
+    	System.out.println(res);
+    	
+    }
+    
+    public static void filterEmployees() {
+    	List<Employee> list = EmployeeFactory.addData();
+    	Map<String, Long> collect = list.stream().collect(Collectors.groupingBy(t->t.dept(),Collectors.counting()));
+    	System.out.println(collect);
+    }
+}
     
 	
-}
+

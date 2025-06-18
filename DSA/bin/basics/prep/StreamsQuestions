@@ -1,0 +1,25 @@
+	1.	How do you filter a list of integers to only even numbers using Stream API?
+	2.	Given a list of strings, how can you convert them to uppercase using streams?
+	3.	How would you count the number of elements greater than 100 in a list using streams?
+	4.	What’s the difference between map() and flatMap() in Stream API? Provide examples.
+	5.	How do you remove duplicates from a list using Stream API?
+	6.	How do you calculate the sum of all numbers in a list using streams?
+	7.	Find the maximum value in a list using Stream API.
+	8.	How would you calculate the average of a list of integers using streams?
+	9.	What is the use of reduce() in Java streams? Provide an example to concatenate strings.
+	10.	Given a list of transactions (with amount), return the total transaction amount using streams.
+	11.	Group a list of employees by their department using Collectors.groupingBy().
+	12.	Count the number of people in each age group using Stream API.
+	13.	How do you partition a list of integers into even and odd numbers?
+	14.	Group a list of words by their length using Stream API.
+	     15.	Get the name of the highest-paid employee in each department.
+	16.	How do you convert a list to a map using streams? (e.g., list of User to Map<id, name>)
+	17.	Given a Map<String, Integer>, how do you filter entries with value > 10 using streams?
+	18.	Sort a Map<String, Integer> by value using Stream API.
+	19.	Convert a list of strings to a comma-separated string using Stream API.
+	20.	How to merge two lists into one using streams?
+	21.	Given a list of orders (each with list of items), flatten all items using Stream API.
+	22.	Sort a list of custom objects (e.g., Students) by name and then by grade.
+	23.	Remove nulls from a list using streams.
+	24.	Find the first non-repeated character in a string using streams.
+	25.	From a list of persons, find the oldest person using Stream API.

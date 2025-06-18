@@ -141,4 +141,20 @@ public class LinkedList1 {
 		}
 		return -1;
     }
+    
+ public boolean hasCycle2(ListNode head) {
+     boolean hasCycle = false;   
+	 
+     ListNode slow = head;
+     ListNode fast = head;
+     
+     while(fast != null && fast.next != null) {
+    	 slow = slow.next;
+    	 fast = fast.next;
+    	 if(slow==fast) {
+    		 return true;
+    	 }
+     }
+	return hasCycle;
+    }
 }
